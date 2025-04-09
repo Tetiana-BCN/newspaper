@@ -67,6 +67,5 @@ build/
 .vscode/
 .qodo
 
-# Ignorar archivo de configuración sensible
-src/main/resources/application.properties
+.env
 
