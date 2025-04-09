@@ -67,5 +67,7 @@ build/
 .vscode/
 .qodo
 
+# Archivos específicos del proyecto
 .env
+.env.example
 
