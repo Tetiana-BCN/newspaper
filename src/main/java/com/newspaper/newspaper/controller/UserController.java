@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.newspaper.newspaper.model.User;
 import com.newspaper.newspaper.service.UserService;
-
+import org.springframework.http.ResponseEntity;
 
 
 
