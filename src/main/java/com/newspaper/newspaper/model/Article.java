@@ -2,7 +2,6 @@ package com.newspaper.newspaper.model;
 
 import java.time.LocalDate;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -12,17 +11,17 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class Article {
     @Id
-    @jakarta.persistence.GeneratedValue(strategy = GenerationType.IDENTITY)    
+    @jakarta.persistence.GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String title;   
+    private String title;
     private String content;
     private String category;
     private LocalDate publicationDate;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;  
+    private User user;
 
     public Article() {
 
@@ -76,11 +75,4 @@ public class Article {
         this.user = user;
     }
 
-
-
-
-    
-
-    
-    
 }

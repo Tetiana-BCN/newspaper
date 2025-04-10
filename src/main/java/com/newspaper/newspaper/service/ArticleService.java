@@ -15,8 +15,19 @@ public class ArticleService {
     }
 
     public ResponseEntity<String> createArticle() {
-        // Example logic to create an article using the repository
-        articleRepository.save(new Article()); // Assuming an Article class exists
+        articleRepository.save(new Article());
         return ResponseEntity.ok("Article created successfully");
+    }
+
+    public ResponseEntity<String> getArticles() {
+        return ResponseEntity.ok("List of articles");
+    }
+
+    public ResponseEntity<String> updateArticle() {
+        return ResponseEntity.ok("Article updated successfully");
+    }
+
+    public ResponseEntity<String> deleteArticle() {
+        return ResponseEntity.ok("Article deleted successfully");
     }
 }
