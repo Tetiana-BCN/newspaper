@@ -14,6 +14,7 @@ import jakarta.validation.constraints.Size;
 public class Article {
     @Id
     @jakarta.persistence.GeneratedValue(strategy = GenerationType.IDENTITY)
+    @jakarta.persistence.GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
@@ -34,6 +35,7 @@ public class Article {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    private User user;
     private User user;
 
     public Article() {
