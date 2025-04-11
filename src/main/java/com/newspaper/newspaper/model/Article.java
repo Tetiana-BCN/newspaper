@@ -2,7 +2,9 @@ package com.newspaper.newspaper.model;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -13,7 +15,8 @@ import jakarta.validation.constraints.Size;
 @Entity
 public class Article {
     @Id
-    @jakarta.persistence.GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "article_id")
     private Long id;
 
     @NotBlank
@@ -88,5 +91,3 @@ public class Article {
     }
 
 }
-
-
