@@ -1,10 +1,12 @@
 package com.newspaper.newspaper.service;
 
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.newspaper.newspaper.model.Article;
 import com.newspaper.newspaper.repository.ArticleRepository;
+import java.util.List;
 
 @Service
 public class ArticleService {
@@ -19,20 +21,26 @@ public class ArticleService {
         return articleRepository.save(article);
     }
 
-    public ResponseEntity<String> createArticle() {
-        articleRepository.save(new Article());
-        return ResponseEntity.ok("Article created successfully");
+    public List<Article> getAllArticles() {
+        return articleRepository.findAll();
     }
 
-    public ResponseEntity<String> getArticles() {
-        return ResponseEntity.ok("List of articles");
+    public Article getArticleById(Long id) {
+        return articleRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Article not found"));
     }
 
-    public ResponseEntity<String> updateArticle() {
-        return ResponseEntity.ok("Article updated successfully");
+    public Article updateArticle(Long id, Article updatedArticle) {
+        Article article = getArticleById(id);
+        article.setTitle(updatedArticle.getTitle());
+        article.setContent(updatedArticle.getContent());
+        article.setCategory(updatedArticle.getCategory());
+        article.setPublicationDate(updatedArticle.getPublicationDate());
+        return articleRepository.save(article);
     }
 
-    public ResponseEntity<String> deleteArticle() {
-        return ResponseEntity.ok("Article deleted successfully");
+    public void deleteArticle(Long id) {
+        articleRepository.deleteById(id);
     }
+
 }
