@@ -2,14 +2,19 @@ package com.newspaper.newspaper.model;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -27,16 +32,16 @@ public class Article {
     @Size(max = 2000)
     private String content;
 
-    @NotBlank
-    @Size(max = 100)
-    private String category;
+    @Enumerated(EnumType.STRING)
+    @NotNull(message = "La categoría no puede estar vacía")
+    private Category category;
 
-    @NotBlank
-    @Size(max = 10)
+    @NotNull(message = "Publication date cannot be null")
     private LocalDate publicationDate;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonBackReference
     private User user;
 
     public Article() {
@@ -66,12 +71,12 @@ public class Article {
         this.content = content;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return this.category;
     }
 
-    public void setCategory(Category cultura) {
-        this.category = cultura;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public LocalDate getPublicationDate() {
