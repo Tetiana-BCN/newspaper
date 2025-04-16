@@ -70,8 +70,8 @@ public class Article {
         return this.category;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategory(Category cultura) {
+        this.category = cultura;
     }
 
     public LocalDate getPublicationDate() {
