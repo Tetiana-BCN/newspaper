@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -17,6 +18,7 @@ import com.newspaper.newspaper.repository.UserRepository;
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@TestPropertySource(locations = "classpath:application-test.properties")
 public class UserControllerIntegrationTest {
 
     @Autowired
@@ -30,32 +32,26 @@ public class UserControllerIntegrationTest {
 
     @Test
     void shouldCreateUserSuccessfully() throws Exception {
-       
         User user = new User();
         user.setName("UsuarioTest");
         user.setEmail("test@correo.com");
-       
 
-       
-        mockMvc.perform(post("/api/users")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(user)))
+        String responseContent = mockMvc.perform(post("/api/users")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(user)))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.id").exists())
                 .andExpect(jsonPath("$.name").value("UsuarioTest"))
-                .andExpect(jsonPath("$.email").value("test@correo.com"));
-
-       
-        String responseContent = mockMvc.perform(post("/api/users")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(user)))
+                .andExpect(jsonPath("$.email").value("test@correo.com"))
                 .andReturn()
                 .getResponse()
                 .getContentAsString();
 
         User createdUser = objectMapper.readValue(responseContent, User.class);
         User savedUser = userRepository.findById(createdUser.getId()).orElse(null);
+
         assertThat(savedUser).isNotNull();
         assertThat(savedUser.getName()).isEqualTo("UsuarioTest");
+        assertThat(savedUser.getEmail()).isEqualTo("test@correo.com");
     }
 }
