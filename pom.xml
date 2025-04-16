@@ -59,9 +59,14 @@
 		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
 		<dependency>
     		<groupId>org.postgresql</groupId>
+<<<<<<< HEAD
 			<scope>runtime</scope>
     		<artifactId>postgresql</artifactId>
 	
+=======
+    		<artifactId>postgresql</artifactId>
+
+>>>>>>> origin
     		<version>42.7.5</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/io.github.cdimascio/dotenv-java -->
@@ -75,7 +80,7 @@
     		<groupId>com.h2database</groupId>
     		<artifactId>h2</artifactId>
     		<version>2.3.232</version>
-    		<scope>test</scope>
+    		<scope>runtime</scope>
 		</dependency>
 		<dependency>
             <groupId>javax.persistence</groupId>
