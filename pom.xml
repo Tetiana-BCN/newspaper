@@ -59,8 +59,9 @@
 		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
 		<dependency>
     		<groupId>org.postgresql</groupId>
-    		<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
+    		<artifactId>postgresql</artifactId>
+	
     		<version>42.7.5</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/io.github.cdimascio/dotenv-java -->

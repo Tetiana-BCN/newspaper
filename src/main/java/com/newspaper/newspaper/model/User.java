@@ -3,6 +3,7 @@ package com.newspaper.newspaper.model;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,6 +24,7 @@ public class User {
     private String name;
     @NotEmpty(message = "Email cannot be empty")
     @Size(min = 5, max = 100, message = "Email must be between 5 and 100 characters")
+    @Column(unique = true)
     private String email;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
