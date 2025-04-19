@@ -1,12 +1,13 @@
 package com.newspaper.newspaper.service;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.newspaper.newspaper.model.Article;
 import com.newspaper.newspaper.repository.ArticleRepository;
-import java.util.List;
 
 @Service
 public class ArticleService {

@@ -1,6 +1,8 @@
 package com.newspaper.newspaper.controller;
 
 import java.util.List;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,13 +12,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.newspaper.newspaper.model.Article;
 import com.newspaper.newspaper.service.ArticleService;
-import org.springframework.http.HttpStatus;
 
 @RestController
 @RequestMapping("/api/v1/article")
-
 public class ArticleController {
 
     private final ArticleService articleService;
@@ -27,8 +28,7 @@ public class ArticleController {
 
     @PostMapping
     public ResponseEntity<Article> createArticle(@RequestBody Article article) {
-        Article newArticle = articleService.createArticle(article);
-        return ResponseEntity.status(HttpStatus.CREATED).body(newArticle);
+        return ResponseEntity.status(HttpStatus.CREATED).body(articleService.createArticle(article));
     }
 
     @GetMapping
@@ -38,8 +38,7 @@ public class ArticleController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Article> getArticleById(@PathVariable Long id) {
-        Article article = articleService.getArticleById(id);
-        return ResponseEntity.ok(article);
+        return ResponseEntity.ok(articleService.getArticleById(id));
     }
 
     @PutMapping("/{id}")
@@ -52,5 +51,4 @@ public class ArticleController {
         articleService.deleteArticle(id);
         return ResponseEntity.noContent().build();
     }
-
 }

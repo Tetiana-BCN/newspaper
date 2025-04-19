@@ -29,7 +29,7 @@ public class Article {
     private String title;
 
     @NotBlank
-    @Size(max = 2000)
+    @Size(min = 50, max = 2000)
     private String content;
 
     @Enumerated(EnumType.STRING)
@@ -43,6 +43,14 @@ public class Article {
     @JoinColumn(name = "user_id")
     @JsonBackReference
     private User user;
+
+    public Article(String title, String content, Category category, LocalDate publicationDate, User user) {
+        this.title = title;
+        this.content = content;
+        this.category = category;
+        this.publicationDate = publicationDate;
+        this.user = user;
+    }
 
     public Article() {
     }
@@ -94,5 +102,4 @@ public class Article {
     public void setUser(User user) {
         this.user = user;
     }
-
 }
