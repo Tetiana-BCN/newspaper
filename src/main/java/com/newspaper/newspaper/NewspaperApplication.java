@@ -12,6 +12,7 @@ public class NewspaperApplication {
 	}
 }
 /*
+ * 
  * package com.newspaper.newspaper;
  * 
  * import java.util.Properties;

@@ -69,5 +69,5 @@ build/
 
 # Archivos específicos del proyecto
 .env
-.env.example
+.env.properties
 
