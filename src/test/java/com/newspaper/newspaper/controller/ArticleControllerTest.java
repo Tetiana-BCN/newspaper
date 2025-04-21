@@ -152,4 +152,5 @@ class ArticleControllerTest {
                 mockMvc.perform(get("/api/v1/article/{id}", article.getId()))
                                 .andExpect(status().isNotFound());
         }
+
 }
