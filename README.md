@@ -1,3 +1,5 @@
+![periodicoDeAyer](https://github.com/user-attachments/assets/a7082ff6-33ae-4c43-8eee-462a61ec7fc6)
+
 🗞️ Periódico de Ayer
 📖 Briefing
 Periódico de Ayer es una API REST desarrollada con Spring Boot y PostgreSQL, que permite gestionar artículos de un periódico digital. Esta herramienta fue creada como proyecto colaborativo para demostrar la capacidad de diseñar, implementar y testear una arquitectura de software en estilo cliente-servidor, siguiendo la metodología MVC (Modelo-Vista-Controlador) en un entorno profesional.
